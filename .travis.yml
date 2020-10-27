@@ -8,8 +8,6 @@ env:
     - secure: "or7ty+yeeQKHP5GvLTeV1U8RrKb0HW9AV3IABIEpLAx2+Ck0V+biEd33uz8BS1QycnQt9YyAV+ToSJpeR4zEFilHXEOn0gZp3414ifeAYXxGQT+vfQjH+M1tp7sHmPLh5E7eTaz5G40AkAZC4qH1ihNOk3DtUbXa0Qe9ERCgxBFvIhjyQGizd6Q4AXSR5eI+cyydTKZyZ6hVLe1kg/fL/WXNPFkjMikzRgQNjXY79HEQviIz+KQ3d1J+1o9Gn2RpXuOJvbSKx1kdIiib239jwRGcpXpg/FHx088nPj4A53UjnAAUUKU0bKwCWqqK2D9vPDvaT9UU4DY0J70tXM/s5OeXgHBXTwAy3vUY+l7BQx1Xo1lyi1a6C3fDclnU/nZanek7yPWnH5UIrrUvgInwFxlqVouS35BxnWWUcHxwSn3ty2xIUAtSTF1BWOugJzoD6aq+c3CK/YqFfs/nJkwDvgSsD4WZn9qhFHrLW1JfzWTmG0Gw3zIONSb2+aMUeIrVxXqoR+UFfoDi5WYgGXRceGIx9f18ge/ygsEFbvPJocDQrbIdegqv7+BWYTGg7vwxrvINX+th+EIJgFNRVwerhrAIhrkrt/0gdlWIJfgCTtCQoJ/zKdTqE23BkM+ACOjZM1T0dfeob0X5lr4zpKQsofPN+6kKUiRvhjL3zuDo03o="
     - secure: "Zp/bj991aLmuQ3x5CXmWgNrocAca+gXrRuYf3xszPoqhHL2ebzQdN2S/rU6h8yhkk5tj7N1D5j+sTp2w3gryqAiGotOwRkw8XBLmCt32pzzb12dXtIBBfyrI03EIoKUgbNbA2SJVbVYqKdS5x+NRCbr0cCKpV0U6tfLIejsR0L/eJ4AqHAw+KeYHsU7dZR0FWZOYe4TYFE/qI8D+0EJMZHtMG+iZILApYoAgxm5wPgQk+kI+nQVYmOZL15cZ8pLSLSoMSCg56HZpZWQjnlc7rm262/w8JH7GQqc0myzLdakvM8QaJ8i2uBW0egSDfp1Dn4X4I0kjXydoTE99TF5E6d9ScJ966BTfCU980iqvZm2eNnLsEk4JB+UafbMaXbA1n/uYBq0N7BvdnuUGKvxlb5bXSxHDIygOkOmDpbRRjTwMJrygN3Ce4r0wkvL05pQJQu36o2J6dvjdFIaZqtXeLPMN352z+6i+sUR9XHUy05MdD4PmqQee4KFq7zwGYouYQJB35/iNujjIHVB6tR+jwASWxJxNadAuf47e4UrpGFgIhG52/OGJ+Wkmjmn2SyEtAoXWUrPs2HlF5zjesMSToUnLt2fY6jnVURwFJvq+/CcFxVlMx+jlzZbHdT2CAIb9fwdBRNmNY6ncEMqQAfbJnDohDaeTfbkNYazFe5d4T2w="
 
-
-
 # Construct the job matrix of OS and Python versions
 # Note that this cannot be done with the usual matrix as macOS and Windows do not support the "python" language option
 jobs:
@@ -21,11 +19,14 @@ jobs:
       python: 3.7            # this works for Linux but is ignored on macOS or Windows
     - name: "Python 3.8 on Xenial Linux"
       python: 3.8            # this works for Linux but is ignored on macOS or Windows
+      env: OSBADGE=linux
     - name: "Python 3.7 on macOS"
       os: osx
+      env: OSBADGE=osx
       language: generic      # 'language: python' causes an error on Travis CI macOS
     - name: "Python 3.8 on Windows"
-      os: windows            # Windows 10.0.17134 N/A Build 17134
+      os: windows
+      env: OSBADGE=windows
       language: generic      # 'language: python' causes an error on Travis CI Windows
       before_install:
       - choco install python --version 3.8.0
