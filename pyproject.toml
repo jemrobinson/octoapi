@@ -19,6 +19,7 @@ Sphinx = "^3.2.1"
 requests = "^2.24.0"
 python-dateutil = "^2.8.1"
 pytz = "^2020.1"
+flake8 = "^3.8.4"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

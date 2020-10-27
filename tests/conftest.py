@@ -1,5 +1,9 @@
 import os
 import pytest
+from functools import lru_cache
+from octopusapi import ElectricityMeter
+from datetime import datetime, timedelta
+import pytz
 
 
 @pytest.fixture
@@ -37,13 +41,15 @@ def grid_supply_points():
     ]
 
 
-def test_have_api_key(api_key):
-    assert api_key is not None
+@pytest.fixture
+def electricity_meter(api_key, electricity_mpan, electricity_serial_number):
+    return ElectricityMeter(api_key, electricity_mpan, electricity_serial_number)
 
 
-def test_have_electricity_mpan(electricity_mpan):
-    assert electricity_mpan is not None
-
-
-def test_have_electricity_serial_number(electricity_serial_number):
-    assert electricity_serial_number is not None
+@pytest.fixture
+@lru_cache
+def test_end_time():
+    test_start_time = datetime.now(tz=pytz.utc).replace(
+        minute=0, second=0, microsecond=0
+    )
+    return test_start_time - timedelta(hours=24)

@@ -1,29 +1,12 @@
 from datetime import datetime, timedelta
-from functools import lru_cache
 import pytest
-import pytz
 from octopusapi import ElectricityMeter, ApiException
-from .fixtures import *
-
-
-@pytest.fixture
-def electricity_meter(api_key, electricity_mpan, electricity_serial_number):
-    return ElectricityMeter(api_key, electricity_mpan, electricity_serial_number)
-
-
-@pytest.fixture
-@lru_cache
-def test_end_time():
-    test_start_time = datetime.now(tz=pytz.utc).replace(
-        minute=0, second=0, microsecond=0
-    )
-    return test_start_time - timedelta(hours=24)
 
 
 def test_electricity_meter_non_existence(api_key):
     electricity_meter = ElectricityMeter(api_key, "fake-mpan", "fake-serial-number")
     with pytest.raises(ApiException):
-        meter_details = electricity_meter.verify()
+        electricity_meter.verify()
 
 
 def test_electricity_meter_existence(
