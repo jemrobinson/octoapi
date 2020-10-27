@@ -16,6 +16,7 @@ keywords      = [
 [tool.poetry.dependencies]
 python = "^3.6"
 Sphinx = "^3.2.1"
+requests = "^2.24.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
