@@ -36,7 +36,7 @@ class MeterMixin:
             params["order_by"] = "period"
         if group_by:
             allowed_groupings = ["hour", "day", "week", "month", "quarter"]
-            if not group_by in allowed_groupings:
+            if group_by not in allowed_groupings:
                 raise ParameterException(
                     "'group_by' must be one of %s", allowed_groupings
                 )

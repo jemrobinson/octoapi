@@ -1,4 +1,3 @@
-import json
 import requests
 from .exceptions import ApiException
 from .types import JSONType
@@ -18,13 +17,8 @@ class AuthenticatedClient:
             response = self.session.request(
                 method="GET", url=request_url, params=params
             )
-            print(request_url)
             response.raise_for_status()
         except requests.RequestException as e:
             raise ApiException("Unexpected response exception") from e
-
-        print("response", response)
-        print("response.text", response.text)
-        print("response.json()", response.json())
 
         return response.json()
