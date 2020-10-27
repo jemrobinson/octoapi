@@ -1,0 +1,45 @@
+dist: xenial
+language: python
+
+# Construct the job matrix of OS and Python versions
+os:
+  - linux
+  - osx
+  - windows
+python:
+  - "3.6"
+  - "3.7"
+  - "3.8"
+
+env:
+  global:
+    secure: "OIgFwRazCKB16mQpIk2uHUzFSAq/lMoYt9uZMxQsd4SIlOeklk/80vupVlLdYwqdLdHWyPGIfBqvl6GPuTvYJPlJyUPf5bs/qA8qk7ImUdMlrrChD6mpmUG11suY1VZ1BmJT0hAtPHUk6xrcEK/1sTc/13R1AonnHwNxdQ3i59YWK2IU9ib9pe0KdOeHfSb6EMd7/n9ICf4Z5b/MxgL0nn/TfwFOXcPlfusD+TH5S2VxVUH6bmf8EiJhdip4tN1HaXji72eA4tSmvNCNhwYhRvTEG8JYTtT3Es1OkwXId9DHS9d6eGYRHAVPYX1tTNtVNoO94TRywz0gTJxiPVKY9ttlbvPRUZh6d3dOzRIxaIk9q/cHmmzxoiJFn3suh+23f4qa9nSXsts3rAdTy+MXWGKvFVfg4dp3HG/7W70KRblzYs7zozKNCtngOwyXaxkmGTtt7CmToHN2uN3Jj7/wi3xUaX+etPvl2UBDfpGTmnyByEr1hT7+5Dr2beG2CPlHSW/WbQaaq/013LBhEIULTQD4tmLLS6HDkhqMRMQJgAZjBOF0Y3iqvYrsBD6xDQTIN0BU0mgfPVcR2CiECFmAYMkTzcBwBuFievL3wjuuU7wZmh0/uj0vHVTDvGsKVKAJon5+yrBi64IU0fItDmjcff4/480QH9ePTVaJmfQ2CVw="
+
+
+jobs:
+  include:
+    - stage: lint
+      before_install:
+      - pip install poetry
+      install:
+      - poetry install
+      script:
+      - poetry run black */
+      - poetry run flake8 */
+      - poetry run pylint */
+    - stage: test
+      script:
+      - poetry run coverage run --source=octopusapi -m pytest tests
+      after_success:
+      - coveralls
+
+# before_deploy:
+# - poetry config repositories.mypypi http://mypypi.example.com/simple
+# - poetry config http-basic.mypypi $MYPYPI_USER $MYPYPI_PASS
+# - poetry build -f sdist
+# deploy:
+#   provider: script
+#   script: poetry publish -r mypypi
+#   skip_cleanup: true
+#   on:
+#     tags: true
