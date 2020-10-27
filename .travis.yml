@@ -52,7 +52,7 @@ script:
 - poetry run flake8 */
 - poetry run pylint */
 # Testing
-- poetry run coverage run -m pytest tests
+- poetry run coverage run --source=octopusapi -m pytest tests
 
 
 # Upload coverage status
