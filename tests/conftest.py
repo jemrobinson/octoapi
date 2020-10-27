@@ -65,7 +65,7 @@ def electricity_meter(
 
 
 @pytest.fixture
-@lru_cache
+@lru_cache(maxsize=1)
 def test_end_time(scope="module"):
     """Get the end time used in subsequent tests.
     We use 24hours ago, rounded down to the nearest hour
