@@ -4,3 +4,7 @@ class OctopusException(Exception):
 
 class ApiException(OctopusException):
     """Unable to retrieve data from the API"""
+
+
+class ParameterException(OctopusException):
+    """Problems with an input parameter"""
