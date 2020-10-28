@@ -32,6 +32,8 @@ jobs:
       before_install:
       - choco install python --version 3.8.0
       - pip3 install poetry  # note that we do not upgrade pip as this hits permissions issues
+  allow_failures:
+    - os: windows            # Windows jobs are still quite fragile so we allow them to fail
 
 
 # Install poetry with pip
