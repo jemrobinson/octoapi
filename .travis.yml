@@ -28,12 +28,12 @@ jobs:
     - name: "Python 3.8 on Windows"
       os: windows
       env: PATH=/c/Python38:/c/Python38/Scripts:$PATH OSBADGE=windows
-      language: generic      # 'language: python' causes an error on Travis CI Windows
+      language: shell        # 'language: python' causes an error on Travis CI Windows
       before_install:
       - choco install python --version 3.8.0
       - pip3 install poetry  # note that we do not upgrade pip as this hits permissions issues
-  allow_failures:
-    - os: windows            # Windows jobs are still quite fragile so we allow them to fail
+  # allow_failures:
+  #   - os: windows            # Windows jobs are still quite fragile so we allow them to fail
 
 
 # Install poetry with pip
