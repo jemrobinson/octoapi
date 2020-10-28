@@ -36,7 +36,7 @@ def test_electricity_meter_consumption_halfhourly(
     consumption = electricity_meter.consumption(
         period_from=start_time, period_to=test_end_time
     )
-    assert len(consumption) == 47
+    assert len(consumption) <= 47
 
 
 def test_electricity_meter_consumption_hourly(
@@ -47,7 +47,7 @@ def test_electricity_meter_consumption_hourly(
     consumption = electricity_meter.consumption(
         period_from=start_time, period_to=test_end_time, group_by="hour"
     )
-    assert len(consumption) == 23
+    assert len(consumption) <= 23
 
 
 def test_electricity_meter_consumption_daily(
@@ -58,7 +58,7 @@ def test_electricity_meter_consumption_daily(
     consumption = electricity_meter.consumption(
         period_from=start_time, period_to=test_end_time, group_by="day"
     )
-    assert len(consumption) == 1
+    assert len(consumption) <= 1
 
 
 def test_electricity_meter_consumption_weekly(
@@ -69,7 +69,7 @@ def test_electricity_meter_consumption_weekly(
     consumption = electricity_meter.consumption(
         period_from=start_time, period_to=test_end_time, group_by="week"
     )
-    assert len(consumption) == 2
+    assert len(consumption) <= 2
 
 
 def test_electricity_meter_consumption_monthly(
@@ -80,15 +80,15 @@ def test_electricity_meter_consumption_monthly(
     consumption = electricity_meter.consumption(
         period_from=start_time, period_to=test_end_time, group_by="month"
     )
-    assert len(consumption) in [0, 1, 2]
+    assert len(consumption) <= 2
 
 
 def test_electricity_meter_consumption_quarterly(
     electricity_meter: ElectricityMeter, test_end_time: datetime
 ) -> None:
     """Test that the electricity meter consumption end point works with quarterly data"""
-    start_time = test_end_time - timedelta(days=31)
+    start_time = test_end_time - timedelta(days=90)
     consumption = electricity_meter.consumption(
         period_from=start_time, period_to=test_end_time, group_by="quarter"
     )
-    assert len(consumption) in [0, 1]
+    assert len(consumption) <= 1
