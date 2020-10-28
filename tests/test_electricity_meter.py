@@ -47,18 +47,27 @@ def test_electricity_meter_consumption_hourly(
     consumption = electricity_meter.consumption(
         period_from=start_time, period_to=test_end_time, group_by="hour"
     )
-    assert len(consumption) <= 23
+    assert consumption is not None
+    interval_hrs = [
+        int((week["interval_end"] - week["interval_start"]).seconds / 3600.0)
+        for week in consumption
+    ]
+    assert max(interval_hrs) == 1
 
 
 def test_electricity_meter_consumption_daily(
     electricity_meter: ElectricityMeter, test_end_time: datetime
 ) -> None:
     """Test that the electricity meter consumption end point works with daily data"""
-    start_time = test_end_time - timedelta(days=1)
+    start_time = test_end_time - timedelta(days=7)
     consumption = electricity_meter.consumption(
         period_from=start_time, period_to=test_end_time, group_by="day"
     )
-    assert len(consumption) <= 1
+    assert consumption is not None
+    interval_days = [
+        (week["interval_end"] - week["interval_start"]).days for week in consumption
+    ]
+    assert max(interval_days) == 1
 
 
 def test_electricity_meter_consumption_weekly(
@@ -69,26 +78,40 @@ def test_electricity_meter_consumption_weekly(
     consumption = electricity_meter.consumption(
         period_from=start_time, period_to=test_end_time, group_by="week"
     )
-    assert len(consumption) <= 2
+    assert consumption is not None
+    interval_days = [
+        (week["interval_end"] - week["interval_start"]).days for week in consumption
+    ]
+    assert max(interval_days) == 7
 
 
+@pytest.mark.skip(reason="Not enough data available yet")
 def test_electricity_meter_consumption_monthly(
     electricity_meter: ElectricityMeter, test_end_time: datetime
 ) -> None:
     """Test that the electricity meter consumption end point works with monthly data"""
-    start_time = test_end_time - timedelta(days=31)
+    start_time = test_end_time - timedelta(days=65)
     consumption = electricity_meter.consumption(
         period_from=start_time, period_to=test_end_time, group_by="month"
     )
-    assert len(consumption) <= 2
+    assert consumption is not None
+    interval_days = [
+        (week["interval_end"] - week["interval_start"]).days for week in consumption
+    ]
+    assert max(interval_days) in [28, 29, 30, 31]
 
 
+@pytest.mark.skip(reason="Not enough data available yet")
 def test_electricity_meter_consumption_quarterly(
     electricity_meter: ElectricityMeter, test_end_time: datetime
 ) -> None:
     """Test that the electricity meter consumption end point works with quarterly data"""
-    start_time = test_end_time - timedelta(days=90)
+    start_time = test_end_time - timedelta(days=365)
     consumption = electricity_meter.consumption(
         period_from=start_time, period_to=test_end_time, group_by="quarter"
     )
-    assert len(consumption) <= 1
+    assert consumption is not None
+    interval_days = [
+        (week["interval_end"] - week["interval_start"]).days for week in consumption
+    ]
+    assert max(interval_days) in [90, 91, 92]

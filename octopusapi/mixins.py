@@ -1,6 +1,7 @@
 from typing import Any, Optional
 from datetime import datetime
 from dateutil import parser
+import pytz
 from .types import JSONType
 from .exceptions import ParameterException
 
@@ -83,8 +84,12 @@ class MeterMixin:
         results = [
             {
                 "consumption": float(entry["consumption"]),
-                "interval_start": parser.parse(entry["interval_start"]),
-                "interval_end": parser.parse(entry["interval_end"]),
+                "interval_start": parser.parse(entry["interval_start"]).astimezone(
+                    pytz.utc
+                ),
+                "interval_end": parser.parse(entry["interval_end"]).astimezone(
+                    pytz.utc
+                ),
             }
             for entry in json_response["results"]
         ]
