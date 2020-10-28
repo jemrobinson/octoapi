@@ -1,5 +1,6 @@
 dist: xenial      # this sets the Ubuntu distribution and is ignored on macOS or Windows
 language: python  # this works for Linux but is an error on macOS or Windows
+os: linux
 
 # Set OCTOPUS_* environment variables used for testing
 env:
@@ -26,12 +27,11 @@ jobs:
       language: generic      # 'language: python' causes an error on Travis CI macOS
     - name: "Python 3.8 on Windows"
       os: windows
-      env: OSBADGE=windows
+      env: PATH=/c/Python38:/c/Python38/Scripts:$PATH OSBADGE=windows
       language: generic      # 'language: python' causes an error on Travis CI Windows
       before_install:
       - choco install python --version 3.8.0
       - pip3 install poetry  # note that we do not upgrade pip as this hits permissions issues
-      env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
 
 
 # Install poetry with pip
