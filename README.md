@@ -1,6 +1,7 @@
 ![OctoAPI Logo](https://raw.githubusercontent.com/jemrobinson/octoapi/main/docs/_static/logo.png)
 
-[![Coverage Status](https://coveralls.io/repos/github/jemrobinson/octoapi/badge.svg?branch=main)](https://coveralls.io/github/jemrobinson/octoapi?branch=main)
+[![PyPI version](https://badge.fury.io/py/octoapi.svg)](https://badge.fury.io/py/octoapi)
+[![Monthly downloads](https://img.shields.io/pypi/dm/octoapi)](https://pypi.org/project/octoapi/)
 [![Dependabot](https://flat.badgen.net/dependabot/jemrobinson/octoapi?icon=dependabot)](https://dependabot.com/)
 [![Code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Licence: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
@@ -10,9 +11,7 @@
 ![OSX](https://img.shields.io/badge/-555?&logo=apple&logoColor=white)[![Build Status](https://badges.formidable.com/travis.com/jemrobinson/octoapi?branch=main&env=OSBADGE=osx&label=%20)](https://travis-ci.com/github/jemrobinson/octoapi)
 ![Linux](https://img.shields.io/badge/-555?&logo=linux&logoColor=white)[![Build Status](https://badges.formidable.com/travis.com/jemrobinson/octoapi?branch=main&env=OSBADGE=linux&label=%20)](https://travis-ci.com/github/jemrobinson/octoapi)
 ![Windows](https://img.shields.io/badge/-555?&logo=windows&logoColor=white)[![Build Status](https://badges.formidable.com/travis.com/jemrobinson/octoapi?branch=main&env=OSBADGE=windows&label=%20)](https://travis-ci.com/github/jemrobinson/octoapi)
-
-[![PyPI version](https://badge.fury.io/py/octoapi.svg)](https://badge.fury.io/py/octoapi)
-[![Monthly downloads](https://img.shields.io/pypi/dm/octoapi)](https://pypi.org/project/octoapi/)
+[![Coverage Status](https://coveralls.io/repos/github/jemrobinson/octoapi/badge.svg?branch=main)](https://coveralls.io/github/jemrobinson/octoapi?branch=main)
 
 ## OctoAPI
 This package provides a Python interface to the [Octopus Energy API](https://developer.octopus.energy/docs/api/).
