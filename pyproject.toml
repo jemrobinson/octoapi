@@ -1,5 +1,5 @@
 [tool.poetry]
-name          = "octopusapi"
+name          = "octoapi"
 version       = "0.1.0"
 description   = "Python interface to Octopus Energy API"
 authors       = ["James Robinson <james.em.robinson@gmail.com>"]
@@ -7,7 +7,7 @@ maintainers   = ["James Robinson <james.em.robinson@gmail.com>"]
 license       = "GPLv3"
 readme        = "README.md"
 homepage      = ""
-repository    = "https://github.com/jemrobinson/octopusapi"
+repository    = "https://github.com/jemrobinson/octoapi"
 documentation = ""
 keywords      = [
     "Electricity"

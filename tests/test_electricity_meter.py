@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 import pytest
-from octopusapi import ElectricityMeter, ApiException
+from octoapi import ElectricityMeter, ApiException
 
 
 def test_electricity_meter_non_existence(api_key: str) -> None:

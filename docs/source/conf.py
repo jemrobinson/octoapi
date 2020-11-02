@@ -7,7 +7,7 @@
 # pylint: disable=invalid-name
 
 # -- Project information -----------------------------------------------------
-project = "octopusapi"
+project = "octoapi"
 copyright = "2020, James Robinson"  # pylint: disable=redefined-builtin
 author = "James Robinson"
 
