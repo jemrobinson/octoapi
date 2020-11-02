@@ -1,4 +1,4 @@
-![OctoAPI Logo](docs/_static/logo.png)
+![OctoAPI Logo](https://raw.githubusercontent.com/jemrobinson/octoapi/main/docs/_static/logo.png)
 
 [![Coverage Status](https://coveralls.io/repos/github/jemrobinson/octoapi/badge.svg?branch=main)](https://coveralls.io/github/jemrobinson/octoapi?branch=main)
 [![Dependabot](https://flat.badgen.net/dependabot/jemrobinson/octoapi?icon=dependabot)](https://dependabot.com/)
