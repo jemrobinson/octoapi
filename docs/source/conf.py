@@ -3,8 +3,8 @@
 # This file only contains a selection of the most common options. For a full
 # list see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
-import toml
 from pathlib import Path
+import toml
 
 # pylint: disable=invalid-name
 
