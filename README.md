@@ -21,15 +21,11 @@ This package provides a Python interface to the [Octopus Energy API](https://dev
 - `Python >= 3.6`
 
 #### Install
-WIP
-<!-- Install with `pip` using
+Install the latest version with `pip` using
 
 ```bash
 pip install octoapi
-``` -->
-
-#### Deploy
-WIP
+```
 
 #### Testing
 The automated tests can be run using
