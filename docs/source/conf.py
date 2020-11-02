@@ -3,6 +3,8 @@
 # This file only contains a selection of the most common options. For a full
 # list see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
+import toml
+from pathlib import Path
 
 # pylint: disable=invalid-name
 
@@ -11,8 +13,10 @@ project = "octoapi"
 copyright = "2020, James Robinson"  # pylint: disable=redefined-builtin
 author = "James Robinson"
 
-# The full version, including alpha/beta/rc tags
-release = "0.1.0"
+# Read the full version, including alpha/beta/rc tags from pyproject.toml
+path = Path(__file__).resolve().parents[2].joinpath("pyproject.toml")
+pyproject = toml.loads(open(str(path)).read())
+release = pyproject["tool"]["poetry"]["version"]
 
 
 # -- General configuration ---------------------------------------------------
