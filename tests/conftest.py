@@ -3,7 +3,7 @@ from functools import lru_cache
 import os
 import pytest
 import pytz
-from octopusapi import ElectricityMeter
+from octoapi import ElectricityMeter
 
 # pylint: disable=unused-argument,redefined-outer-name
 
