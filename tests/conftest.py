@@ -73,4 +73,4 @@ def test_end_time(scope="module"):
     test_start_time = datetime.now(tz=pytz.utc).replace(
         minute=0, second=0, microsecond=0
     )
-    return test_start_time - timedelta(hours=24)
+    return test_start_time - timedelta(days=7)

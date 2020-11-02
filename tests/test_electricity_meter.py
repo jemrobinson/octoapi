@@ -15,6 +15,7 @@ def test_electricity_meter_existence(
 ) -> None:
     """Test that the electricity meter end point has the right structure"""
     meter_details = electricity_meter.verify()
+    assert meter_details
     assert meter_details["mpan"] == electricity_mpan
     assert meter_details["gsp"] in grid_supply_points
     assert isinstance(meter_details["profile_class"], int)
@@ -23,6 +24,7 @@ def test_electricity_meter_existence(
 def test_electricity_meter_consumption(electricity_meter: ElectricityMeter) -> None:
     """Test that the electricity meter consumption end point has the right structure"""
     consumption = electricity_meter.consumption()
+    assert consumption
     assert isinstance(consumption[0]["consumption"], float)
     assert isinstance(consumption[0]["interval_start"], datetime)
     assert isinstance(consumption[0]["interval_end"], datetime)
@@ -36,6 +38,7 @@ def test_electricity_meter_consumption_halfhourly(
     consumption = electricity_meter.consumption(
         period_from=start_time, period_to=test_end_time
     )
+    assert consumption
     assert len(consumption) <= 47
 
 
@@ -47,7 +50,7 @@ def test_electricity_meter_consumption_hourly(
     consumption = electricity_meter.consumption(
         period_from=start_time, period_to=test_end_time, group_by="hour"
     )
-    assert consumption is not None
+    assert consumption
     interval_hrs = [
         int((week["interval_end"] - week["interval_start"]).seconds / 3600.0)
         for week in consumption
@@ -63,7 +66,7 @@ def test_electricity_meter_consumption_daily(
     consumption = electricity_meter.consumption(
         period_from=start_time, period_to=test_end_time, group_by="day"
     )
-    assert consumption is not None
+    assert consumption
     interval_days = [
         (week["interval_end"] - week["interval_start"]).days for week in consumption
     ]
@@ -78,7 +81,7 @@ def test_electricity_meter_consumption_weekly(
     consumption = electricity_meter.consumption(
         period_from=start_time, period_to=test_end_time, group_by="week"
     )
-    assert consumption is not None
+    assert consumption
     interval_days = [
         (week["interval_end"] - week["interval_start"]).days for week in consumption
     ]
@@ -94,7 +97,7 @@ def test_electricity_meter_consumption_monthly(
     consumption = electricity_meter.consumption(
         period_from=start_time, period_to=test_end_time, group_by="month"
     )
-    assert consumption is not None
+    assert consumption
     interval_days = [
         (week["interval_end"] - week["interval_start"]).days for week in consumption
     ]
@@ -110,7 +113,7 @@ def test_electricity_meter_consumption_quarterly(
     consumption = electricity_meter.consumption(
         period_from=start_time, period_to=test_end_time, group_by="quarter"
     )
-    assert consumption is not None
+    assert consumption
     interval_days = [
         (week["interval_end"] - week["interval_start"]).days for week in consumption
     ]
