@@ -11,6 +11,9 @@
 ![Linux](https://img.shields.io/badge/-555?&logo=linux&logoColor=white)[![Build Status](https://badges.formidable.com/travis.com/jemrobinson/octoapi?branch=main&env=OSBADGE=linux&label=%20)](https://travis-ci.com/github/jemrobinson/octoapi)
 ![Windows](https://img.shields.io/badge/-555?&logo=windows&logoColor=white)[![Build Status](https://badges.formidable.com/travis.com/jemrobinson/octoapi?branch=main&env=OSBADGE=windows&label=%20)](https://travis-ci.com/github/jemrobinson/octoapi)
 
+[![PyPI version](https://badge.fury.io/py/octoapi.svg)](https://badge.fury.io/py/octoapi)
+[![Monthly downloads](https://img.shields.io/pypi/dm/octoapi)](https://pypi.org/project/octoapi/)
+
 ## OctoAPI
 This package provides a Python interface to the [Octopus Energy API](https://developer.octopus.energy/docs/api/).
 
