@@ -8,7 +8,6 @@
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 
 [![Build Status](https://travis-ci.com/jemrobinson/octoapi.svg?branch=main)](https://travis-ci.com/jemrobinson/octoapi)
-![OSX](https://img.shields.io/badge/-555?&logo=apple&logoColor=white)[![Build Status](https://badges.formidable.com/travis.com/jemrobinson/octoapi?branch=main&env=OSBADGE=osx&label=%20)](https://travis-ci.com/github/jemrobinson/octoapi)
 ![Linux](https://img.shields.io/badge/-555?&logo=linux&logoColor=white)[![Build Status](https://badges.formidable.com/travis.com/jemrobinson/octoapi?branch=main&env=OSBADGE=linux&label=%20)](https://travis-ci.com/github/jemrobinson/octoapi)
 ![Windows](https://img.shields.io/badge/-555?&logo=windows&logoColor=white)[![Build Status](https://badges.formidable.com/travis.com/jemrobinson/octoapi?branch=main&env=OSBADGE=windows&label=%20)](https://travis-ci.com/github/jemrobinson/octoapi)
 [![Coverage Status](https://coveralls.io/repos/github/jemrobinson/octoapi/badge.svg?branch=main)](https://coveralls.io/github/jemrobinson/octoapi?branch=main)
