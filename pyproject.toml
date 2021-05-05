@@ -27,7 +27,7 @@ coveralls = "^3.0.1"
 flake8 = "^3.9.1"
 pathlib = "^1.0.1"
 pylint = "^2.8.2"
-pytest = "^6.2.3"
+pytest = "^6.2.4"
 toml = "^0.10.2"
 
 [build-system]
