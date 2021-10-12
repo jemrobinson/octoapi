@@ -1,29 +1,53 @@
 from datetime import datetime, timedelta
 from functools import lru_cache
 import os
+from pathlib import Path
 import pytest
 import pytz
+import toml
 from octoapi import ElectricityMeter
 
 # pylint: disable=unused-argument,redefined-outer-name
 
+def config():
+    """Attempt to load config file"""
+    config_path = Path(__file__).resolve().parents[1].joinpath("user_config.toml")
+    try:
+        with open(config_path, "r") as f_config:
+            config = toml.loads(f_config.read())
+        return config
+    except (FileNotFoundError, toml.decoder.TomlDecodeError):
+        return {}
+
 
 @pytest.fixture
 def api_key(scope="module"):
-    """Get API key from environment variable"""
-    return os.environ["OCTOPUS_API_KEY"]
+    """Get API key from config or environment variable"""
+    try:
+        api_key = config()["general"]["api_key"]
+    except KeyError:
+        api_key = os.environ["OCTOPUS_API_KEY"]
+    return api_key
 
 
 @pytest.fixture
 def electricity_mpan(scope="module"):
-    """Get electricity meter MPAN from environment variable"""
-    return os.environ["OCTOPUS_ELECTRICITY_MPAN"]
+    """Get electricity meter MPAN from config or environment variable"""
+    try:
+        mpan = config()["electricity"]["mpan"]
+    except KeyError:
+        mpan = os.environ["OCTOPUS_ELECTRICITY_MPAN"]
+    return mpan
 
 
 @pytest.fixture
 def electricity_serial_number(scope="module"):
-    """Get electricity meter serial number from environment variable"""
-    return os.environ["OCTOPUS_ELECTRICITY_SERIAL_NUMBER"]
+    """Get electricity meter serial number from config or environment variable"""
+    try:
+        serial = config()["electricity"]["serial_number"]
+    except KeyError:
+        serial = os.environ["OCTOPUS_ELECTRICITY_SERIAL_NUMBER"]
+    return serial
 
 
 @pytest.fixture
