@@ -134,3 +134,6 @@ dmypy.json
 
 # OSX files
 .DS_Store
+
+# Project related files
+user_config.toml
